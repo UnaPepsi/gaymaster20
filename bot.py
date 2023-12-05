@@ -5,7 +5,6 @@ from keep_alive import keep_alive
 from bs4 import BeautifulSoup
 from discord.ext import commands
 
-
 def run_discord_bot():
 	client = commands.Bot(command_prefix="-",intents=discord.Intents.all())
 	
