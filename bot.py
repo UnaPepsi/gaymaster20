@@ -5,7 +5,6 @@ from keep_alive import keep_alive
 from bs4 import BeautifulSoup
 from discord.ext import commands
 
-
 #No longer used
 # async def send_message(message, user_message, is_private):
 #   try:
@@ -134,9 +133,6 @@ def run_discord_bot():
       await interaction.response.send_message(f"{username}'s accuracy: {oss.acc(username)}")
     except ValueError:
       await interaction.response.send_message(f"Username {username} not found")
-  @client.tree.command(description="Shows the bot's changelog")
-  async def changelog(interaction: discord.Interaction):
-    await interaction.response.send_message(botchangelog.changelog("2.3.0"))
   @client.tree.command(description="Shows a random unsecured camera")
   async def randomcam(interaction: discord.Interaction):
     await interaction.response.defer()
@@ -167,6 +163,9 @@ def run_discord_bot():
       await interaction.response.send_message("No")
     else:
       await interaction.response.send_message("Yes, finally!!!")
+  @client.tree.command(description="Shows the bot's changelog")
+  async def changelog(interaction: discord.Interaction):
+    await interaction.response.send_message(botchangelog.changelog("2.3.0"))
   
   keep_alive()
   client.run(os.environ['TOKEN'])
