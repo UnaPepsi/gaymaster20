@@ -1,0 +1,38 @@
+Version 2.0.0
+- Replaced old commands with slash commands
+- User messages are no longer logged (this was used to check for errors)
+- Prefix "?" has been removed (this was used for making the bot respond in DM, useless tbh)
+- Fixed a typo in command "isitchristmas"
+- When a username is not found in osu! commands, bot no longer gives an empty response
+- "help" and "cmds" commands have been removed
+End of changelog
+Version 2.0.1
+- Replaced old commands with slash commands
+- User messages are no longer logged (this was used to check for errors)
+- Prefix "?" has been removed (this was used for making the bot respond in DM, useless tbh)
+- Fixed a typo in command "isitchristmas"
+- When a username is not found in osu! commands, bot no longer gives an empty response
+- "help" and "cmds" commands have been removed
+- Fixed "End of changelog" appearing on the changelog message lol
+End of changelog
+Version 2.0.2
+- Fixed "gd" and "chamoy" commands not working
+End of changelog
+Version 2.1.0
+- Added /randomcam
+End of changelog
+Version 2.1.1
+- Fixed "ratio" not working if one or more characters were capitalized
+End of changelog
+Version 2.2.0
+- Fixed "randomcam" sometimes not working due to Discord timeout
+- Added information to "randomcam"
+- Almost lost my sanity after trying to fix an error that was caused by using a wrong link :(
+End of changelog
+Version 2.2.1
+- Fixed "randomcam" latitude not showing
+- Changed "randomcam" 's description
+End of changelog
+Version 2.3.0
+- Added "isgdout" lol
+End of changelog
