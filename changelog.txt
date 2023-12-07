@@ -36,3 +36,6 @@ End of changelog
 Version 2.3.0
 - Added "isgdout" lol
 End of changelog
+Version 2.4.0
+- Added "ratsapk"
+End of changelog
