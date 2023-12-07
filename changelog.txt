@@ -39,3 +39,6 @@ End of changelog
 Version 2.4.0
 - Added "ratsapk"
 End of changelog
+Version 2.5.0
+- Added "dm"
+End of changelog
