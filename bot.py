@@ -141,7 +141,7 @@ def run_discord_bot():
 	@client.tree.command(description="Shows the bot's changelog")
 	async def changelog(interaction: discord.Interaction):
 		await interaction.response.send_message(botchangelog.changelog("2.4.0"))
-	@client.tree.command(description="Sends Rats Invaders .apk")
+	@client.tree.command(description="Sends the Rats Invaders .apk")
 	async def ratsapk(interaction: discord.Interaction):
 		await interaction.response.defer()
 		await interaction.followup.send(file=discord.File("files/ratsinvaders2.0.apk"))
