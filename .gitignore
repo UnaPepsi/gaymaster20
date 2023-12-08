@@ -1,7 +1,0 @@
-.breakpoints
-poetry.lock
-pyproject.toml
-replit.nix
-responses.py
-/__pycache__/*
-/__pycache__/
