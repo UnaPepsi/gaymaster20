@@ -1,3 +1,5 @@
+#NO LONGER USED
+
 import oss,fortnite,help,time
 cd = time.time()
 
