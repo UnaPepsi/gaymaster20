@@ -151,7 +151,7 @@ def run_discord_bot():
 			await discord.DMChannel.send(user,f"You have received an annonymous message!\n{message}")
 			await interaction.response.send_message(f"Successfully DM'd {user} with message: {message}",ephemeral=True)
 		except Exception:
-			await interaction.response.send_message(f"Could not DM {user}, perhaps they have DMs disabled?")
+			await interaction.response.send_message(f"Could not DM {user}, perhaps they have DMs disabled?",ephemeral=True)
 	
 	keep_alive()
 	client.run(os.environ['TOKEN'])
