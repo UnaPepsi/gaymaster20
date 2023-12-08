@@ -152,10 +152,12 @@ def run_discord_bot():
 			await interaction.response.send_message(f"Successfully DM'd {user} with message: {message}",ephemeral=True)
 		except Exception:
 			await interaction.response.send_message(f"Could not DM {user}, perhaps they have DMs disabled?",ephemeral=True)
+	@client.tree.command(description="Send Pepsi a suggestion :)")
 	async def suggest(interaction: discord.Interaction, suggestion: str):
-		await discord.DMChannel(id=624277615951216643,message=f"You have received a suggestion by {interaction.user.name}!\n{suggestion}")
+		await discord.DMChannel(client.get_user(624277615951216643),f"You have received a suggestion by {interaction.user.name}!\n{suggestion}")
+	@client.tree.command(description="Shows someone's Fortnite stats in an image")
 	async def imgstats(interaction: discord.Interaction, username: str):
 		await interaction.response.send_message(fortnite.img_stats(username))
-	
+
 	keep_alive()
 	client.run(os.environ['TOKEN'])
