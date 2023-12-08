@@ -140,7 +140,7 @@ def run_discord_bot():
 			await interaction.response.send_message("Yes, finally!!!")
 	@client.tree.command(description="Shows the bot's changelog")
 	async def changelog(interaction: discord.Interaction):
-		await interaction.response.send_message(botchangelog.changelog("2.5.0"))
+		await interaction.response.send_message(botchangelog.changelog("2.6.0"))
 	@client.tree.command(description="Sends the Rats Invaders .apk")
 	async def ratsapk(interaction: discord.Interaction):
 		await interaction.response.defer()
@@ -152,6 +152,10 @@ def run_discord_bot():
 			await interaction.response.send_message(f"Successfully DM'd {user} with message: {message}",ephemeral=True)
 		except Exception:
 			await interaction.response.send_message(f"Could not DM {user}, perhaps they have DMs disabled?",ephemeral=True)
+	async def suggest(interaction: discord.Interaction, suggestion: str):
+		await discord.DMChannel(id=624277615951216643,message=f"You have received a suggestion by {interaction.user.name}!\n{suggestion}")
+	async def imgstats(interaction: discord.Interaction, username: str):
+		await interaction.response.send_message(fortnite.img_stats(username))
 	
 	keep_alive()
 	client.run(os.environ['TOKEN'])
