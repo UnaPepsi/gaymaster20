@@ -1,11 +1,11 @@
 import discord,os,fortnite,typing,oss,time,botchangelog
-from random import randint
+from random import randint,choice
 from requests import get
 from keep_alive import keep_alive
 from bs4 import BeautifulSoup
-from discord.ext import commands
+from discord.ext import commands, tasks
 
-
+status = ["pepsi","tokaua","donovan"]
 
 def run_discord_bot():
 	client = commands.Bot(command_prefix="-",intents=discord.Intents.all())
@@ -14,17 +14,22 @@ def run_discord_bot():
 	async def on_ready():
 		print(f"{client.user} is now running")
 		await client.tree.sync()
-
+		change_status.start()
+	
 	@client.event
 	async def on_message(message):
 		if message.author == client.user:
-			return
-
+			return		
 		user_message = str(message.content)
 		if user_message.lower() == "ratio":
 			await message.add_reaction("\U0001F44D")
 			await message.add_reaction("\U0001F44E")
 
+	@tasks.loop(seconds=10)
+	async def change_status():
+		name = choice(status)
+		await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{name}'s videos"))
+	
 	@client.tree.command(description="Gets someone's BattlePass level")
 	async def level(interaction: discord.Interaction,username: str):
 		await interaction.response.send_message(fortnite.get_bp_level(username))
@@ -140,7 +145,7 @@ def run_discord_bot():
 			await interaction.response.send_message("Yes, finally!!!")
 	@client.tree.command(description="Shows the bot's changelog")
 	async def changelog(interaction: discord.Interaction):
-		await interaction.response.send_message(botchangelog.changelog("2.6.1"))
+		await interaction.response.send_message(botchangelog.changelog("2.7.0"))
 	@client.tree.command(description="Sends the Rats Invaders .apk")
 	async def ratsapk(interaction: discord.Interaction):
 		await interaction.response.defer()

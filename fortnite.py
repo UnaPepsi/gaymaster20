@@ -13,7 +13,7 @@ def get_bp_level(username: str) -> str:
   level = a['data']['battlePass']['level']
   progress = a['data']['battlePass']['progress']
   return f"{username}'s BattlePass is at level {level} (progress: {progress})"
-def get_stats(username: str, time_window: str, stat: str, mode: str) -> int:
+def get_stats(username: str, time_window: str, stat: str, mode: str) -> str:
   try:
     b = requests.get("https://fortnite-api.com/v2/stats/br/v2/",headers={"Authorization":key},params={"timeWindow":time_window,"name":username}).json()
     if list(b)[1] == "error":

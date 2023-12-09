@@ -50,3 +50,6 @@ End of changelog
 Version 2.6.1
 - Added time window for "imgstats"
 End of changelog
+Version 2.7.0
+- Changed pfp, about me, and added a changing rich presence :)
+End of changelog
