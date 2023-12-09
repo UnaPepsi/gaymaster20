@@ -140,7 +140,7 @@ def run_discord_bot():
 			await interaction.response.send_message("Yes, finally!!!")
 	@client.tree.command(description="Shows the bot's changelog")
 	async def changelog(interaction: discord.Interaction):
-		await interaction.response.send_message(botchangelog.changelog("2.6.0"))
+		await interaction.response.send_message(botchangelog.changelog("2.6.1"))
 	@client.tree.command(description="Sends the Rats Invaders .apk")
 	async def ratsapk(interaction: discord.Interaction):
 		await interaction.response.defer()
@@ -159,8 +159,8 @@ def run_discord_bot():
 		await dm_channel.send(f"You have received a suggestion by {interaction.user.name}!\n{suggestion}")
 		await interaction.response.send_message("Thank you for the suggestion :)")
 	@client.tree.command(description="Shows someone's Fortnite stats in an image")
-	async def imgstats(interaction: discord.Interaction, username: str):
-		await interaction.response.send_message(fortnite.img_stats(username))
+	async def imgstats(interaction: discord.Interaction, username: str, time_window: typing.Literal['lifetime','season']):
+		await interaction.response.send_message(fortnite.img_stats(username,time_window))
 
 	keep_alive()
 	client.run(os.environ['TOKEN'])

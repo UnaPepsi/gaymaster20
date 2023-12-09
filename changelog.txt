@@ -47,3 +47,6 @@ Version 2.6.0
 - Added "imgstats" (overall Fortnite stats in an image)
 - Uploaded a new video :-) https://youtu.be/nEHQiHGYZ0s?si=KwjMA8ffALDrJ2Vy
 End of changelog
+Version 2.6.1
+- Added time window for "imgstats"
+End of changelog
