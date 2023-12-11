@@ -59,3 +59,6 @@ End of changelog
 Version 2.8.0
 - Added "randpass" (it generates a random pass :O!)
 End of changelog
+Version 2.9.0
+- Added "copypasta"
+End of changelog
