@@ -50,3 +50,5 @@ End of changelog
 Version 2.6.1
 - Added time window for "imgstats"
 End of changelog
+Version 2.7.0
+- Added "randpass" (it generates a random password :O!)

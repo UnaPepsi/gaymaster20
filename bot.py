@@ -1,4 +1,4 @@
-import discord,os,fortnite,typing,oss,time,botchangelog
+import discord,os,fortnite,typing,oss,time,botchangelog,randpass
 from random import randint
 from requests import get
 from keep_alive import keep_alive
@@ -138,9 +138,6 @@ def run_discord_bot():
 			await interaction.response.send_message("No")
 		else:
 			await interaction.response.send_message("Yes, finally!!!")
-	@client.tree.command(description="Shows the bot's changelog")
-	async def changelog(interaction: discord.Interaction):
-		await interaction.response.send_message(botchangelog.changelog("2.6.1"))
 	@client.tree.command(description="Sends the Rats Invaders .apk")
 	async def ratsapk(interaction: discord.Interaction):
 		await interaction.response.defer()
@@ -161,6 +158,13 @@ def run_discord_bot():
 	@client.tree.command(description="Shows someone's Fortnite stats in an image")
 	async def imgstats(interaction: discord.Interaction, username: str, time_window: typing.Literal['lifetime','season']):
 		await interaction.response.send_message(fortnite.img_stats(username,time_window))
+	@client.tree.command(description="Generates a random passsowrd")
+	async def randpass(interaction: discord.Interaction, lower: typing.Literal[True,False],upper: typing.Literal[True,False],
+					numbers: typing.Literal[True,False],symbols: typing.Literal[True,False],characters: int):
+		await interaction.response.send_message(randpass.pass_gen(lower,upper,numbers,symbols,characters))
+	@client.tree.command(description="Shows the bot's changelog")
+	async def changelog(interaction: discord.Interaction):
+		await interaction.response.send_message(botchangelog.changelog("2.7.0"))
 
 	keep_alive()
 	client.run(os.environ['TOKEN'])
