@@ -1,4 +1,4 @@
-import discord,os,fortnite,typing,oss,time,botchangelog,randpass
+import discord,os,fortnite,typing,oss,time,botchangelog,randompass
 from random import randint,choice
 from requests import get
 from keep_alive import keep_alive
@@ -167,7 +167,7 @@ def run_discord_bot():
 	@client.tree.command(description="Generates a random passsowrd")
 	async def randpass(interaction: discord.Interaction, lower: typing.Literal[True,False],upper: typing.Literal[True,False],
 					numbers: typing.Literal[True,False],symbols: typing.Literal[True,False],characters: int):
-		await interaction.response.send_message(randpass.pass_gen(lower,upper,numbers,symbols,characters))
+		await interaction.response.send_message(randompass.pass_gen(lower,upper,numbers,symbols,characters))
 	@client.tree.command(description="Shows the bot's changelog")
 	async def changelog(interaction: discord.Interaction):
 		await interaction.response.send_message(botchangelog.changelog("2.8.0"))
