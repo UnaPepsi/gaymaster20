@@ -1,4 +1,4 @@
-import discord,os,fortnite,typing,oss,time,botchangelog,randompass
+import discord,os,fortnite,typing,oss,time,botchangelog,randompass,reddit
 from random import randint,choice
 from requests import get
 from keep_alive import keep_alive
@@ -177,6 +177,14 @@ def run_discord_bot():
 	@client.tree.command(description="Shows the bot's changelog")
 	async def changelog(interaction: discord.Interaction):
 		await interaction.response.send_message(botchangelog.changelog("2.8.0"))
+	@client.tree.command(description="Sends a random copypasta from Reddit")
+	async def copypasta(interaction: discord.Interaction):
+		embed = discord.Embed(
+			colour=discord.Colour.dark_orange(),
+			title="Copypasta",
+			description=reddit.rand_copy_pasta()
+		)
+		await interaction.response.send_message(embed=embed)
 
 	keep_alive()
 	client.run(os.environ['TOKEN'])
