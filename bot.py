@@ -165,9 +165,10 @@ def run_discord_bot():
 	async def imgstats(interaction: discord.Interaction, username: str, time_window: typing.Literal['lifetime','season']):
 		await interaction.response.send_message(fortnite.img_stats(username,time_window))
 	@client.tree.command(description="Generates a random passsowrd")
-	async def randpass(interaction: discord.Interaction, lower: typing.Literal[True,False],upper: typing.Literal[True,False],
-					numbers: typing.Literal[True,False],symbols: typing.Literal[True,False],characters: int):
-		await interaction.response.send_message(randompass.pass_gen(lower,upper,numbers,symbols,characters))
+	async def randpass(interaction: discord.Interaction, lower: bool,upper: bool,
+					numbers: bool,symbols: bool,characters: int):
+		print(f"{interaction.user.name} used randpass")
+		await interaction.response.send_message(f"```{randompass.pass_gen(lower,upper,numbers,symbols,characters)}```",ephemeral=True)
 	@client.tree.command(description="Shows the bot's changelog")
 	async def changelog(interaction: discord.Interaction):
 		await interaction.response.send_message(botchangelog.changelog("2.8.0"))

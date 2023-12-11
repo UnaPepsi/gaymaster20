@@ -16,10 +16,7 @@ def pass_gen(lower: bool,upper: bool,number: bool,symbol: bool,long: int):
 	for value in list(options):
 		if not options.get(value):
 			del options[value]
-	try:
-		for i in range(long):
-			element = choice(list(options))
-			password += element[randint(0,len(element)-1)]
-	except ValueError:
-		return "Amount of characters must be an integer"
+	for i in range(long):
+		element = choice(list(options))
+		password += element[randint(0,len(element)-1)]
 	return password
