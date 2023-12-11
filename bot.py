@@ -13,7 +13,7 @@ def run_discord_bot():
 	@client.event
 	async def on_ready():
 		print(f"{client.user} is now running")
-		await client.tree.sync()
+		# await client.tree.sync()
 		change_status.start()
 	
 	@client.event
@@ -21,10 +21,15 @@ def run_discord_bot():
 		if message.author == client.user:
 			return
 
-		user_message = str(message.content)
-		if user_message.lower() == "ratio":
+		user_message = str(message.content).lower()
+		if user_message == "ratio":
 			await message.add_reaction("\U0001F44D")
 			await message.add_reaction("\U0001F44E")
+		if user_message == "botsync":
+			if message.author == client.get_user(624277615951216643):
+				await message.add_reaction("\U0001F44D")
+				print("synced")
+				await client.tree.sync()
 
 	@tasks.loop(seconds=10)
 	async def change_status():
@@ -166,9 +171,9 @@ def run_discord_bot():
 		await interaction.response.send_message(fortnite.img_stats(username,time_window))
 	@client.tree.command(description="Generates a random passsowrd")
 	async def randpass(interaction: discord.Interaction, lower: bool,upper: bool,
-					numbers: bool,symbols: bool,characters: int):
+					numbers: bool,symbols: bool,length: int):
 		print(f"{interaction.user.name} used randpass")
-		await interaction.response.send_message(f"```{randompass.pass_gen(lower,upper,numbers,symbols,characters)}```",ephemeral=True)
+		await interaction.response.send_message(f"```{randompass.pass_gen(lower,upper,numbers,symbols,length)}```",ephemeral=True)
 	@client.tree.command(description="Shows the bot's changelog")
 	async def changelog(interaction: discord.Interaction):
 		await interaction.response.send_message(botchangelog.changelog("2.8.0"))
