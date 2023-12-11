@@ -7,6 +7,8 @@ symbols = "!#$%&/()=[+*]^|-_:;{}.,<>?¿¡'\"\\"
 
 
 def pass_gen(lower: bool,upper: bool,number: bool,symbol: bool,long: int):
+	if long > 1000:
+		return "Why would you need a password that long?"
 	options = {}
 	password = ""
 	options.update({lower_case:lower})
