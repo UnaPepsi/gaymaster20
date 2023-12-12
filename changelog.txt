@@ -62,3 +62,9 @@ End of changelog
 Version 2.9.0
 - Added "copypasta"
 End of changelog
+Version 2.10.0
+- Removed "copypasta". Reddit sucks
+End of changelog
+Version 2.10.1
+- Fixed bugs with "randpass"
+End of changelog
