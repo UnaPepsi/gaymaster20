@@ -1,4 +1,4 @@
-import discord,os,fortnite,typing,oss,time,botchangelog,randompass
+import discord,os,fortnite,typing,oss,time,botchangelog,randompass,illumes
 from random import randint,choice
 from requests import get
 from keep_alive import keep_alive
@@ -174,9 +174,12 @@ def run_discord_bot():
 					numbers: bool,symbols: bool,length: int):
 		print(f"{interaction.user.name} used randpass")
 		await interaction.response.send_message(f"```{randompass.pass_gen(lower,upper,numbers,symbols,length)}```",ephemeral=True)
+	@client.tree.command(description="Shows a random rat")
+	async def rat(interaction: discord.Interaction):
+		await interaction.response.send_message(illumes.rat(randint(0,10),randint(0,9)))
 	@client.tree.command(description="Shows the bot's changelog")
 	async def changelog(interaction: discord.Interaction):
-		await interaction.response.send_message(botchangelog.changelog("2.10.1"))
+		await interaction.response.send_message(botchangelog.changelog("2.11.0"))
 
 	keep_alive()
 	client.run(os.environ['TOKEN'])

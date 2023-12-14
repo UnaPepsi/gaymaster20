@@ -68,3 +68,6 @@ End of changelog
 Version 2.10.1
 - Fixed bugs with "randpass"
 End of changelog
+Version 2.11.0
+- Added "rat"
+End of changelog
