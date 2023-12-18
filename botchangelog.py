@@ -1,4 +1,6 @@
 def changelog(version: str):
+  if version == "latest":
+    version = "2.12.0"
   with open("changelog.txt", "r") as f:
     lines = f.readlines()
     verIndex = lines.index(f"Version {version}\n")
