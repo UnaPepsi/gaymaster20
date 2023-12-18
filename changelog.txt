@@ -78,3 +78,6 @@ Version 2.12.0
 - Now you can check previous changelogs (use latest for latest changelog)
 - Every <t:1702915200:t>, a message about a QOTD will be sent (unless I forget or replit decides to be homosexual)
 End of changelog
+Version 2.12.1
+- Fixed "changelog" giving an error if no changelogs were found
+End of changelog

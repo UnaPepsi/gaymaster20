@@ -44,7 +44,7 @@ def run_discord_bot():
 	async def change_status():
 		name = choice(status)
 		await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{name}'s videos"),status=discord.Status.idle)
-	@tasks.loop(seconds=10)
+	@tasks.loop(minutes=10)
 	async def send_qotd():
 		global sent
 		if int(time.strftime("%H",time.localtime())) == 16 and not sent and qotd != "":
