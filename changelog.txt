@@ -71,3 +71,6 @@ End of changelog
 Version 2.11.0
 - Added "rat"
 End of changelog
+Version 2.11.1
+- Fixed "randomcam" sometimes giving error in console and thus not sending the image
+End of changelog

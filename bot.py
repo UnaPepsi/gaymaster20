@@ -131,11 +131,14 @@ def run_discord_bot():
 			if code == 200:
 				link = get(f"http://www.opentopia.com/webcam/{randNum}")
 				soup = BeautifulSoup(link.text,'html.parser')
-				find = [soup.find("label",attrs={"class":"right country-name"}).text,
-							 soup.find("label",attrs={"class":"right region"}).text]
+				find = [soup.find("label",attrs={"class":"right country-name"}).text]
 				try:
-						find.append(soup.find("span",attrs={"class":"latitude"}).text)
-						find.append(soup.find("span",attrs={"class":"longitude"}).text)
+					find.append(soup.find("label",attrs={"class":"right region"}).text)
+				except AttributeError:
+					find.append("Not Found")
+				try:
+					find.append(soup.find("span",attrs={"class":"latitude"}).text)
+					find.append(soup.find("span",attrs={"class":"longitude"}).text)
 				except AttributeError:
 					find.append("Not")
 					find.append("Found")
@@ -179,7 +182,7 @@ def run_discord_bot():
 		await interaction.response.send_message(illumes.rat(randint(0,10),randint(0,9)))
 	@client.tree.command(description="Shows the bot's changelog")
 	async def changelog(interaction: discord.Interaction):
-		await interaction.response.send_message(botchangelog.changelog("2.11.0"))
+		await interaction.response.send_message(botchangelog.changelog("2.11.1"))
 
 	keep_alive()
 	client.run(os.environ['TOKEN'])
