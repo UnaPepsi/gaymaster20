@@ -24,13 +24,6 @@ def run_discord_bot():
 		if message.author == client.user:
 			return
 		user_message = str(message.content).lower()
-		if message.channel.id == 1052998529192312832 and message.author.id == 624277615951216643 and user_message.startswith("qotd\n"):
-			global qotd,sent
-			msgcontent = user_message.split("\n")[1]
-			if qotd != msgcontent:
-				sent = False
-			qotd = msgcontent
-			print(qotd)
 		if user_message == "ratio":
 			await message.add_reaction("\U0001F44D")
 			await message.add_reaction("\U0001F44E")
@@ -44,13 +37,18 @@ def run_discord_bot():
 	async def change_status():
 		name = choice(status)
 		await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{name}'s videos"),status=discord.Status.idle)
-	@tasks.loop(minutes=10)
+	@tasks.loop(minutes=25)
 	async def send_qotd():
-		global sent
+		global sent,qotd
+		qotd_channel = await client.get_channel(1186453245456031764).fetch_message(1186453372082077827)
+		qotd = qotd_channel.content
+		# print(qotd)
 		if int(time.strftime("%H",time.localtime())) == 16 and not sent and qotd != "":
 			channel = client.get_guild(607689950275698720).get_channel(1029245905204957215)
 			await channel.send(f"QOTD:\n{qotd}")
 			sent = True
+		else:
+			sent = False
 
 	@client.tree.command(description="Gets someone's BattlePass level")
 	async def level(interaction: discord.Interaction,username: str):
