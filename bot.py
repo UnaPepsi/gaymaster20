@@ -6,8 +6,6 @@ from bs4 import BeautifulSoup
 from discord.ext import commands, tasks
 
 status = ["pepsi","tokaua","donovan"]
-qotd = ""
-sent = False
 
 def run_discord_bot():
 	client = commands.Bot(command_prefix="",intents=discord.Intents.all())
@@ -24,6 +22,9 @@ def run_discord_bot():
 		if message.author == client.user:
 			return
 		user_message = str(message.content).lower()
+		# if user_message.split()[0] == "jajaxd" and message.author.id == 624277615951216643:
+		# 	channel = client.get_guild(830871521080901743).get_channel(1186453245456031764)
+		# 	await channel.send(message.content.split(maxsplit=1)[1])
 		if user_message == "ratio":
 			await message.add_reaction("\U0001F44D")
 			await message.add_reaction("\U0001F44E")
@@ -37,18 +38,15 @@ def run_discord_bot():
 	async def change_status():
 		name = choice(status)
 		await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{name}'s videos"),status=discord.Status.idle)
-	@tasks.loop(minutes=25)
+	@tasks.loop(minutes=10)
 	async def send_qotd():
-		global sent,qotd
-		qotd_channel = await client.get_channel(1186453245456031764).fetch_message(1186453372082077827)
-		qotd = qotd_channel.content
+		sent_channel = await client.get_channel(1186453245456031764).fetch_message(1186705930428108983)
+		qotd = sent_channel.content
 		# print(qotd)
-		if int(time.strftime("%H",time.localtime())) == 16 and not sent and qotd != "":
+		if int(time.strftime("%H",time.localtime())) == 16 and qotd != "QOTD sent":
 			channel = client.get_guild(607689950275698720).get_channel(1029245905204957215)
 			await channel.send(f"QOTD:\n{qotd}")
-			sent = True
-		else:
-			sent = False
+			await sent_channel.edit(content="QOTD sent")
 
 	@client.tree.command(description="Gets someone's BattlePass level")
 	async def level(interaction: discord.Interaction,username: str):
@@ -194,6 +192,14 @@ def run_discord_bot():
 	@client.tree.command(description="Shows a random rat")
 	async def rat(interaction: discord.Interaction):
 		await interaction.response.send_message(illumes.rat(randint(0,10),randint(0,9)))
+	@client.tree.command(description="Changes the QOTD")
+	async def qotd(interaction: discord.Interaction, qotd: str):
+		if interaction.user.id != 624277615951216643:
+			await interaction.response.send_message("Pepsi command only")
+		else:
+			sent_channel = await client.get_channel(1186453245456031764).fetch_message(1186705930428108983)
+			await sent_channel.edit(content=qotd)
+			await interaction.response.send_message(f"Changed QOTD to {qotd}\nRemember to use this command past 10am")
 	@client.tree.command(description="Shows the bot's changelog")
 	async def changelog(interaction: discord.Interaction,version: str):
 		await interaction.response.send_message(botchangelog.changelog(version))
