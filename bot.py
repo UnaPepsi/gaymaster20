@@ -5,7 +5,9 @@ from keep_alive import keep_alive
 from bs4 import BeautifulSoup
 from discord.ext import commands, tasks
 
-status = ["pepsi","tokaua","donovan"]
+status = {"pepsi":"https://www.youtube.com/watch?v=nEHQiHGYZ0s",
+					"tokaua":"https://www.youtube.com/watch?v=URBpbhH580k",
+					"donovan":"https://www.youtube.com/watch?v=zdDeokVmgCE"}
 
 def run_discord_bot():
 	client = commands.Bot(command_prefix="",intents=discord.Intents.all())
@@ -36,8 +38,9 @@ def run_discord_bot():
 
 	@tasks.loop(seconds=20)
 	async def change_status():
-		name = choice(status)
-		await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{name}'s videos"),status=discord.Status.idle)
+		name = choice(list(status))
+		# await client.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{name}'s videos"),status=discord.Status.idle)
+		await client.change_presence(activity = discord.Streaming(name=f"{name}'s videos",url=status[name]))
 	@tasks.loop(minutes=10)
 	async def send_qotd():
 		sent_channel = await client.get_channel(1186453245456031764).fetch_message(1186705930428108983)
