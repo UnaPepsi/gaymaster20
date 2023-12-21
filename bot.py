@@ -1,4 +1,4 @@
-import discord,os,fortnite,typing,oss,time,botchangelog,randompass,illumes
+import discord,os,fortnite,typing,oss,time,botchangelog,randompass,illumes,nitrogen
 from random import randint,choice
 from requests import get
 from keep_alive import keep_alive
@@ -66,7 +66,7 @@ def run_discord_bot():
 		await interaction.response.send_message(f"A total of {int((time.time()-1701297218)/86400)} days have passed since ViperMC died")
 	@client.tree.command(description="Is it Christmas?")
 	async def isitchristmas(interaction: discord.Interaction):
-		if time.localtime()[1] == 11 and time.localtime()[2] == 25:
+		if time.localtime()[1] == 12 and time.localtime()[2] == 25:
 			await interaction.response.send_message("Yes! Merry Christmas! :tada:")
 		else:
 			await interaction.response.send_message("No")
@@ -203,6 +203,20 @@ def run_discord_bot():
 	@client.tree.command(description="Shows the bot's changelog")
 	async def changelog(interaction: discord.Interaction,version: str):
 		await interaction.response.send_message(botchangelog.changelog(version))
-
+	@client.tree.command(description="Uses stupid OperaGX nitro promotion exploit to generate nitro codes")
+	async def getnitro(interaction: discord.Interaction):
+		await interaction.response.send_message(f"https://discord.com/billing/partner-promotions/1180231712274387115/{nitrogen.nitro_gen()}")
+	@client.tree.command(description="gen")
+	async def pepsigen(interaction: discord.Interaction):
+		if interaction.user.id != 624277615951216643:
+			await interaction.response.send_message("Pepsi command only")
+			return
+		else:
+			await interaction.response.defer()
+			for i in range(50):
+				user = client.get_user(624277615951216643)
+				dm_channel = await user.create_dm()
+				await dm_channel.send(f"<https://discord.com/billing/partner-promotions/1180231712274387115/{nitrogen.nitro_gen()}>")
+		await interaction.followup.send("Done.")
 	keep_alive()
 	client.run(os.environ['TOKEN'])

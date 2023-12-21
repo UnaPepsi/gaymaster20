@@ -81,3 +81,6 @@ End of changelog
 Version 2.12.1
 - Fixed "changelog" giving an error if no changelogs were found
 End of changelog
+Version 2.13.0
+- Added "getnitro"
+End of changelog
