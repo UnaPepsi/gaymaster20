@@ -1,5 +1,6 @@
-import discord,os,fortnite,typing,oss,time,botchangelog,randompass,illumes,nitrogen
+import discord,os,fortnite,typing,oss,time,botchangelog,randompass,illumes,nitrogen,fight
 from random import randint,choice
+from asyncio import sleep
 from requests import get
 from keep_alive import keep_alive
 from bs4 import BeautifulSoup
@@ -221,5 +222,25 @@ def run_discord_bot():
 				dm_channel = await user.create_dm()
 				await dm_channel.send(f"<https://discord.com/billing/partner-promotions/1180231712274387115/{nitrogen.nitro_gen()}>")
 		await interaction.followup.send("Done.")
+	async def duel(interaction: discord.Interaction, oponent: discord.User):
+		await interaction.response.defer()
+		data = fight.start_duel(interaction.user.name,oponent.name)
+		channel = await client.get_channel(interaction.channel_id)
+		await channel.send(f"Starting duel between <@{interaction.user.id}> and <@{oponent.id}>")
+		await sleep(2)
+		await channel.send(data['item'][0])
+		await sleep(1)
+		await channel.send(data['item'][1])
+		await sleep(2)
+		await channel.send(data['prepare'][0])
+		await sleep(1)
+		await channel.send(data['prepare'][1])
+		await sleep(2)
+		await channel.send(data['confrontation'][0])
+		await sleep(1)
+		await channel.send(data['confrontation'][1])
+		await sleep(3)
+		await channel.send(data['death'][0])
+		await interaction.followup.send(f"{data['death'][1]} wins!")
 	keep_alive()
 	client.run(os.environ['TOKEN'])
