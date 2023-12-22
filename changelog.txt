@@ -87,3 +87,6 @@ End of changelog
 Version 2.14.0
 - Changed bot's RPC, if you'd like to appear on it DM me your YT channel and your favorite video of yours
 End of changelog
+Version 2.15.0
+- Updated "gd"
+End of changelog

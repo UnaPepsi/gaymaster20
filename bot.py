@@ -75,7 +75,7 @@ def run_discord_bot():
 			await interaction.response.send_message("No")
 	@client.tree.command(description="GEOMETRY DASH")
 	async def gd(interaction: discord.Interaction):
-		await interaction.response.send_message("https://streamable.com/m42w6m GEOMETRY DASH BEOMMM")
+		await interaction.response.send_message("https://streamable.com/8kgjto GEOMETRY DASH BEOMMM")
 	@client.tree.command(description="Chamoy")
 	async def chamoy(interaction: discord.Interaction):
 		await interaction.response.send_message("https://streamable.com/kzrd5r")
