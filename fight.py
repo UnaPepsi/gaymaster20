@@ -1,6 +1,6 @@
 import json,random
 
-async def start_duel(player_1: str, player_2: str):
+def start_duel(player_1: str, player_2: str):
 	with open("files/messages.json","r") as f:
 		data = json.load(f)
 	rand = random.randint(0,1)
@@ -11,7 +11,7 @@ async def start_duel(player_1: str, player_2: str):
 		victim = player_2
 		attacker = player_1
 	return {
-		"item":[random.choice(data['item']).format(player=player_1),random.choice(data['item']).format(player=player_1)],
+		"item":[random.choice(data['item']).format(player=player_1),random.choice(data['item']).format(player=player_2)],
 		"prepare":[random.choice(data['prepare']).format(player=player_1),random.choice(data['prepare']).format(player=player_2)],
 		"confrontation":[random.choice(data['confrontation']).format(victim=player_1,attacker=player_2),random.choice(data['confrontation']).format(victim=player_2,attacker=player_1)],
 		"death":[random.choice(data['death']).format(victim=victim,attacker=attacker),attacker]
