@@ -223,14 +223,19 @@ def run_discord_bot():
 				await dm_channel.send(f"<https://discord.com/billing/partner-promotions/1180231712274387115/{nitrogen.nitro_gen()}>")
 		await interaction.followup.send("Done.")
 	@client.tree.command(description="Duels someone!")
-	async def duel(interaction: discord.Interaction, oponent: discord.User):
-		if interaction.user.id == oponent.id:
+	@commands.guild_only()
+	@discord.app_commands.checks.cooldown(1, 33, key=lambda i: (i.channel_id))
+	async def duel(interaction: discord.Interaction, opponent: discord.User):
+		if interaction.user.id == opponent.id:
 			await interaction.response.send_message("You can't duel yourself!")
 			return
-		data = fight.start_duel(interaction.user.name,oponent.name)
+		if opponent == client.user:
+			await interaction.response.send_message("Oh? You're approaching me? Instead of running away, you come right to me? Even though your grandfather, Joseph, told you the secret of The World, like an exam student scrambling to finish the problems on an exam until the last moments before the chime?")
+			return
+		data = fight.start_duel(interaction.user.name,opponent.name)
 		# print(data)
 		channel = client.get_channel(interaction.channel_id)
-		await interaction.response.send_message(f"Starting duel between <@{interaction.user.id}> and <@{oponent.id}>")
+		await interaction.response.send_message(f"Starting duel between <@{interaction.user.id}> and <@{opponent.id}>")
 		await sleep(2)
 		await channel.send(data['item'][0])
 		await sleep(4)
@@ -246,5 +251,11 @@ def run_discord_bot():
 		await sleep(7)
 		await channel.send(data['death'][0])
 		await channel.send(f"{data['death'][1]} wins!")
+	@duel.error
+	async def duel_error(interaction: discord.Interaction, error: discord.app_commands.AppCommandError):
+		if isinstance(error, discord.app_commands.errors.CommandOnCooldown):
+			await interaction.response.send_message(f"You're on cooldown! Try again in {error.retry_after:.2f} seconds",ephemeral=True)
+
+	
 	keep_alive()
 	client.run(os.environ['TOKEN'])

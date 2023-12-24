@@ -93,3 +93,12 @@ End of changelog
 Version 2.16.0
 - Added "duel"
 End of changelog
+Version 2.17.0
+- Added easter egg when dueling a specific user :)
+End of changelog
+Version 2.17.1
+- Fixed typo in "duel"
+End of changelog
+Version 2.18.0
+- Added channel cooldown to "duel"
+End of changelog

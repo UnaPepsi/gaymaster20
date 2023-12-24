@@ -9,11 +9,12 @@
 		"{player} grabbed a plastic knife",
 		"{player} found a broken glass bottle",
 		"{player} placed a kitchen knife in SCP 914 with setting \"very nice\" and got the \"Damascus Sword\" (sharpest sword in the world)",
-		"{player} got 1 senzu Bean",
+		"{player} got 1 Senzu Bean",
 		"{player} trained a Clash Royale Sparky",
 		"{player} got Geass mind control power",
 		"{player} got The World stand powers",
-		"{player} got Hamon powers"
+		"{player} got Hamon powers",
+		"{player} found SCP 500"
 	],
 	"prepare":[
 		"{player} practices jitterclicking",
@@ -24,6 +25,7 @@
 		"{player} is lazy and gained 15Kg while moderating a Discord server",
 		"{player} goes to the gym and ends up 5 times stronger",
 		"{player} hires 15 bodygards",
+		"{player} masters breathing techniques",
 		"{player} practices running"
 	],
 	"confrontation":[
