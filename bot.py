@@ -8,7 +8,8 @@ from discord.ext import commands, tasks
 
 status = {"pepsi":"https://www.youtube.com/watch?v=nEHQiHGYZ0s",
 					"tokaua":"https://www.youtube.com/watch?v=URBpbhH580k",
-					"donovan":"https://www.youtube.com/watch?v=zdDeokVmgCE"}
+					"donovan":"https://www.youtube.com/watch?v=zdDeokVmgCE",
+				 "twovb":"https://www.youtube.com/watch?v=9zH9NoTJClo"}
 
 def run_discord_bot():
 	client = commands.Bot(command_prefix="",intents=discord.Intents.all())
@@ -203,7 +204,7 @@ def run_discord_bot():
 		else:
 			sent_channel = await client.get_channel(1186453245456031764).fetch_message(1186705930428108983)
 			await sent_channel.edit(content=qotd)
-			await interaction.response.send_message(f"Changed QOTD to {qotd}\nRemember to use this command past 10am")
+			await interaction.response.send_message(f"Changed QOTD to {qotd}\nRemember to use this command past 11am")
 	@client.tree.command(description="Shows the bot's changelog")
 	async def changelog(interaction: discord.Interaction,version: str):
 		await interaction.response.send_message(botchangelog.changelog(version))

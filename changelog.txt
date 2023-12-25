@@ -102,3 +102,6 @@ End of changelog
 Version 2.18.0
 - Added channel cooldown to "duel"
 End of changelog
+Version 2.19.0
+- Added twovb to RPC :D
+End of changelog
