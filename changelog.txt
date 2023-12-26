@@ -105,3 +105,6 @@ End of changelog
 Version 2.19.0
 - Added twovb to RPC :D
 End of changelog
+Version 2.20.0
+- "nitrogen" now actually works
+End of changelog

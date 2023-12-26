@@ -1,6 +1,6 @@
 def changelog(version: str):
 	if version == "latest":
-		version = "2.19.0"
+		version = "2.20.0"
 	with open("changelog.txt", "r") as f:
 		lines = f.readlines()
 		try:

@@ -210,7 +210,7 @@ def run_discord_bot():
 		await interaction.response.send_message(botchangelog.changelog(version))
 	@client.tree.command(description="Uses stupid OperaGX nitro promotion exploit to generate nitro codes")
 	async def getnitro(interaction: discord.Interaction):
-		await interaction.response.send_message(f"https://discord.com/billing/partner-promotions/1180231712274387115/{nitrogen.nitro_gen()}")
+		await interaction.response.send_message(f"<https://discord.com/billing/partner-promotions/1180231712274387115/{nitrogen.nitro_gen()}>")
 	@client.tree.command(description="gen")
 	async def pepsigen(interaction: discord.Interaction):
 		if interaction.user.id != 624277615951216643:
