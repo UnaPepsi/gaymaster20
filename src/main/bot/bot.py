@@ -1,8 +1,10 @@
-import discord,os,fortnite,typing,oss,time,botchangelog,randompass,illumes,nitrogen,fight
+# import discord,os,fortnite,typing,oss,time,botchangelog,randompass,illumes,nitrogen,fight
+import discord,os,typing,time
+from resources import botchangelog,fortnite,oss,randompass,illumes,nitrogen,fight
 from random import randint,choice
 from asyncio import sleep
 from requests import get
-from keep_alive import keep_alive
+from resources.keep_alive import keep_alive
 from bs4 import BeautifulSoup
 from discord.ext import commands, tasks
 
