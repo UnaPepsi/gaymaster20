@@ -1,7 +1,7 @@
 import json,random
 
 def start_duel(player_1: str, player_2: str):
-	with open("files/messages.json","r") as f:
+	with open("src/main/resources/files/messages.json","r") as f:
 		data = json.load(f)
 	rand = random.randint(0,1)
 	if rand == 1:

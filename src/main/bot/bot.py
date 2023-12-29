@@ -174,7 +174,7 @@ def run_discord_bot():
 	@client.tree.command(description="Sends the Rats Invaders .apk")
 	async def ratsapk(interaction: discord.Interaction):
 		await interaction.response.defer()
-		await interaction.followup.send(file=discord.File("files/ratsinvaders2.0.apk"))
+		await interaction.followup.send(file=discord.File("src/main/resources/files/ratsinvaders2.0.apk"))
 	@client.tree.command(description="Annonymously DMs someone")
 	async def dm(interaction: discord.Interaction, user: discord.User, message: str):
 		try:
